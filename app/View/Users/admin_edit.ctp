@@ -38,14 +38,32 @@ $(document).ready(function(){
                             <label>Rang</label>
                             <font color="#A94442"><small><?php echo $this->Form->error('role'); ?></small></font>
                             <?php if($data['User']['role'] == 0){ ?>
-                            <select name="data[User][role]" class="form-control" label="Rang" id="UserRole">
+                            < <select name="data[User][role]" class="form-control" label="Rang" id="UserRole">
                                 <option value="0">Utilisateur</option>
-                                <option value="1">Administrateur</option>
+                                <option value="1">Rédacteur</option>
+                                <option value="2">Administrateur</option>
+                                <option value="3">Webmaster</option>
                             </select>
-                            <?php } else { ?>
+                            <?php } elseif($data['User']['role'] == 1) { ?>
                             <select name="data[User][role]" class="form-control" label="Rang" id="UserRole">
-                                <option value="1">Administrateur</option>
+                                <option value="1">Rédacteur</option>
                                 <option value="0">Utilisateur</option>
+                                <option value="2">Administrateur</option>
+                                <option value="3">Webmaster</option>
+                            </select>
+                            <?php } elseif($data['User']['role'] == 2) {?>
+                            <select name="data[User][role]" class="form-control" label="Rang" id="UserRole">
+                                <option value="2">Administrateur</option>
+                                <option value="0">Utilisateur</option>
+                                <option value="1">Rédacteur</option>
+                                <option value="3">Webmaster</option>
+                            </select>
+                            <?php } else {?>
+                            <select name="data[User][role]" class="form-control" label="Rang" id="UserRole">
+                                <option value="3">Webmaster</option>
+                                <option value="2">Administrateur</option>
+                                <option value="0">Utilisateur</option>
+                                <option value="1">Rédacteur</option>
                             </select>
                             <?php } ?>
                         </div>

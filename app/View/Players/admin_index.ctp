@@ -46,21 +46,20 @@ $count = count($players);
     <div class="container">
         <div class="page-content">
             <div class="single-head">
-                <h3 class="pull-left"><i class="fa fa-table"></i><?php echo $count; ?> joueurs connecté(s) sur le serveur</h3>
+                <h3 class="pull-left"><i class="fa fa-table lblue"></i><?php echo $count; ?> joueurs connecté(s) sur le serveur</h3>
                 <div class="clearfix"></div>
             </div>
             <div class="page-tables">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover" cellpadding="0" cellspacing="0" border="0" id="data-table" width="100%">
+                    <table class="table table-bordered table-hover" cellpadding="0" cellspacing="0" border="0" id="data-table" width="115%">
                         <thead>
                             <tr>
                                 <th><b>Pseudo</b></th>
+                                <th><b>OP</b></th>
                                 <th><b>GM</b></th>
                                 <th><b>Niveau</b></th>
                                 <th><b>Monde</b></th>
-                                <th><b>Santé</b></th>
                                 <th><b>Première connexion</b></th>
-                                <th><b>Dernière connexion</b></th>
                                 <th><b>Adresse IP</b></th>
                                 <th><b>Actions</b></th>
                             </tr>
@@ -80,7 +79,30 @@ $count = count($players);
 	                                	}
 	                                	?>
 	                                </td>
-	                                <td><?php echo $p['gameMode']; ?></td>
+                                    <td>
+                                        <?php
+                                            if($p['op'] == true)
+                                                {?>
+                                                    <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'deop', $p['name']]); ?>" class="label label-danger"></i> OP ON</a>
+                                          <?php }
+                                            else
+                                                {?>
+                                                   <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'op', $p['name']]); ?>" class="label label-black"></i> OP OFF</a> 
+                                          <?php }
+                                        ?>
+                                    </td>
+	                                <td>
+                                        <?php
+                                            if($p['gameMode'] == 1)
+                                                {?>
+                                                    <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'gmoff', $p['name']]); ?>" class="label label-danger"></i> GM ON</a>
+                                          <?php }
+                                            else
+                                                {?>
+                                                   <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'gmon', $p['name']]); ?>" class="label label-black"></i> GM OFF</a> 
+                                          <?php }
+                                        ?>
+                                    </td>
 	                                <td><?php echo $p['level']; ?></td>
 	                                <td>
 	                                	<?php
@@ -92,14 +114,8 @@ $count = count($players);
 	                                	}
 	                                	?>
 	                                </td>
-	                                <td>
-	                                	<?php
-	                                	echo round($p['health']).' '.$this->Html->image('minecraft/heart.png', ['width' => 16, 'height' => 16]).' ';
-	                                	echo $p['foodLevel'].' '.$this->Html->image('minecraft/food.png', ['width' => 16, 'height' => 16]);
-	                                	?>
-	                                </td>
 	                                <td><?php echo date('d-m-Y à H:i', $p['firstPlayed']); ?></td>
-                                    <td><?php echo date('d-m-Y à H:i', $p['lastPlayed']); ?></td>
+                                    <!--<td><?php echo date('d-m-Y à H:i', $p['lastPlayed']); ?></td>-->
                                     <td>
                                         <?php
                                         $ip = str_replace('/', '', $p['ip']);
@@ -108,14 +124,16 @@ $count = count($players);
                                         ?>
                                     </td>
 	                                <td>
-	                                	<a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'kick', $p['name']]); ?>" class="label label-black"><i class="fa fa-bolt"></i> Kick</a>
-	                                	<a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'clear', $p['name']]); ?>" class="label label-black"><i class="fa fa-trash"></i> Clear</a>
+                                        <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'foudre', $p['name']]); ?>" class="label label-black"><i class="fa fa-bolt"></i> Foudre</a>
+	                                	<a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'kick', $p['name']]); ?>" class="label label-black"></i> Kick</a>
+	                                	<a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'clear', $p['name']]); ?>" class="label label-black"> Clear</a>
                                         <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'ban', $p['name']]); ?>" class="label label-danger"><i class="fa fa-ban"></i> Ban</a>
-                                        <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'banip', $p['name']]); ?>" class="label label-danger"><i class="fa fa-globe"></i> Ban IP</a>
+                                        <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'banip', $ip[0]]); ?>" class="label label-danger"><i class="fa fa-globe"></i> Ban IP</a>
                                         <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'whois', $p['name']]); ?>" class="label label-success"><i class="fa fa-info-circle"></i> Whois ?</a>
 	                                </td>
 	                            </tr>
 								<?php
+								// debug($p);
 							}
 							?>
                         </tbody>

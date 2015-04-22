@@ -74,11 +74,91 @@
                                 <li class="has_submenu">
                                     <a href="#"><i class="fa fa-cloud"></i> Serveur <span class="nav-caret fa fa-caret-down"></span></a>
                                     <ul class="list-unstyled">
+                                        <li class="has_submenu">
+                                            <a href="#"><i class="fa fa-pie-chart"></i> Statistiques <span class="nav-caret fa fa-caret-down"></span></a>
+                                                <ul class="list-unstyled">
+                                                    <li>
+                                                        <a href="<?php echo $this->Html->url(['controller' => 'charts', 'action' => 'memory', 'admin' => true]); ?>"><i class="fa fa-pie-chart"></i> Consommation RAM</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="<?php echo $this->Html->url(['controller' => 'charts', 'action' => 'disk', 'admin' => true]); ?>"><i class="fa fa-pie-chart"></i> Consommation Disk</a>
+                                                    </li>
+                                                </ul>
+                                        </li>
+                                        <li class="has_submenu">
+                                            <a href="#"><i class="fa fa-list"></i> Joueurs <span class="nav-caret fa fa-caret-down"></span></a>
+                                                <ul class="list-unstyled">
+                                                    <li>
+                                                        <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'index', 'admin' => true]); ?>"><i class="fa fa-users"></i> Joueurs Online</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'offline', 'admin' => true]); ?>"><i class="fa fa-users"></i> Joueurs Offline</a>
+                                                    </li>
+                                                </ul>
+                                        </li>
+                                        <li class="has_submenu">
+                                            <a href="#"><i class="fa fa-list"></i> Event Online <span class="nav-caret fa fa-caret-down"></span></a>
+                                                <ul class="list-unstyled">
+                                                    <li>
+                                                        <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'index', 'admin' => true]); ?>"><i class="fa fa-users"></i> Joueurs</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'offline', 'admin' => true]); ?>"><i class="fa fa-users"></i> Messages prédefinies</a>
+                                                    </li>
+                                                </ul>
+                                        </li>
+                                        <li class="has_submenu">
+                                            <a href="#"><i class="fa fa-list"></i> Grade <span class="nav-caret fa fa-caret-down"></span></a>
+                                                <ul class="list-unstyled">
+                                                    <li class="has_submenu">
+                                                        <a href="#"><i class="fa fa-cloud"></i> Gradés <span class="nav-caret fa fa-caret-down"></span></a>
+                                                            <ul class="list-unstyled">
+                                                                <li>
+                                                                    <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'index', 'admin' => true]); ?>"><i class="fa fa-list"></i> Admins</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'index', 'admin' => true]); ?>"><i class="fa fa-list"></i> Modérateurs</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'index', 'admin' => true]); ?>"><i class="fa fa-list"></i> Animateurs</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'index', 'admin' => true]); ?>"><i class="fa fa-list"></i> Architects</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'index', 'admin' => true]); ?>"><i class="fa fa-list"></i> VIP</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'index', 'admin' => true]); ?>"><i class="fa fa-list"></i> VIP+</a>
+                                                                </li>
+                                                            </ul>
+                                                            <li>
+                                                                <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'gradeall', 'admin' => true]); ?>"><i class="fa fa-list"></i> Liste membres</a>
+                                                            </li>
+                                                    </li>   
+                                                </ul>
+                                        </li>
+                                        <li class="has_submenu">
+                                            <a href="#"><i class="fa fa-support"></i> Mondes <span class="nav-caret fa fa-caret-down"></span></a>
+                                                <ul class="list-unstyled">
+                                                    <li>
+                                                        <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'serveur', 'admin' => true]); ?>"><i class="fa fa-list"></i> Worlds</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'gserveur', 'admin' => true]); ?>"><i class="fa fa-list"></i> Gestion Worlds</a>
+                                                    </li>
+                                                </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="has_submenu">
+                                    <a href="#"><i class="fa fa-cloud"></i> Bans <span class="nav-caret fa fa-caret-down"></span></a>
+                                    <ul class="list-unstyled">
                                         <li>
-                                            <a href="<?php echo $this->Html->url(['controller' => 'charts', 'action' => 'memory', 'admin' => true]); ?>"><i class="fa fa-pie-chart"></i> Consommation</a>
+                                            <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'banplayer', 'admin' => true]); ?>"><i class="fa fa-list"></i> Pseudos</a>
                                         </li>
                                         <li>
-                                            <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'index', 'admin' => true]); ?>"><i class="fa fa-users"></i> Joueurs</a>
+                                            <a href="<?php echo $this->Html->url(['controller' => 'players', 'action' => 'pbanip', 'admin' => true]); ?>"><i class="fa fa-list"></i> Ip</a>
                                         </li>
                                     </ul>
                                 </li>
